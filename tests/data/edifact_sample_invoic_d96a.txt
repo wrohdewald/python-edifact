@@ -1,0 +1,53 @@
+UNH+5+INVOIC:D:96A:UN:EAN008'
+BGM+380+53455514+9'
+DTM+137:20170221:102'
+FTX+SUR+++Bezueglich der Entgeltsminderungen verweisen wir auf:die aktuellen Zahlungs- und Konditionsvereinbarungen.'
+FTX+SUR+++Keine Rechnung i.S.d. Paragraph 14 Abs. 1 UStG'
+RFF+ACE:1041087931'
+RFF+ACD:06682804'
+RFF+DQ:40166163'
+NAD+SU+9999999999999::9++Lieferant AG+Strasse+Ort++1234+CH'
+RFF+API:4175'
+NAD+BY+4317784040181::9++Kunde AG+Kundenstrasse 3+Kundenort++1235+CH'
+RFF+API:43111'
+NAD+DP+4317784040181::9++Kunde AG+Kundenstrasse 3+Kundenort++1235+CH'
+RFF+API:43111'
+TAX+7+VAT+++:::8.00'
+CUX+2:CHF:4'
+PAT+3'
+DTM+209:20170228:102'
+PAT+3'
+DTM+12:20170315:102'
+PCD+12:3'
+
+LIN+10'
+QTY+47:1:PCE'
+MOA+203:1450.37'
+PRI+AAA:1450.37:::1'
+
+LIN+20'
+QTY+47:1:PCE'
+MOA+203:49.07'
+PRI+AAA:49.07:::1'
+
+UNS+S'		 # Summary section
+MOA+124:117.26'  # Steuer gesamt: 8% auf 1450.37  plus 2.5% auf 49.07
+MOA+77:1616.7'   # Brutto gesamt
+MOA+125:1499.44' # Netto gesamt
+MOA+79:1499.44'  # Netto gesamt
+
+TAX+7+VAT+++:::2.5'
+MOA+125:49.07'	 # Netto 2.5%
+MOA+124:1.23'    # Steuer 2.5% auf 49.07
+
+TAX+7+VAT+++:::2.5'
+MOA+79:49.07'    # Netto 2.5%
+
+TAX+7+VAT+++:::8'
+MOA+125:1450.37' # Brutto 8%
+MOA+124:116.03' # Steuer 8% auf 1450.37
+
+TAX+7+VAT+++:::8'
+MOA+79:1450.37' # Brutto 8%
+
+UNT+45+5'

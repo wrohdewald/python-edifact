@@ -1,0 +1,244 @@
+<TRANSMISSION>
+     <DTM status="M" repeats="35" label="Date/time/period" description="00030: A segment specifying general dates and, when relevant, times related to the whole message. The segment must be specified at least once to identify the invoice date. Examples of the use of this DTM segment is: 'shipped on date' or 'delivery date'."></DTM>
+     <PAI status="C" repeats="1" label="Payment instructions" description="00040: A segment requesting or confirming conditions of payment, guarantee and method of payment for the whole invoice. An example of the use of this segment is to specify the type of documentary credit used in the transaction."></PAI>
+     <ALI status="C" repeats="5" label="Additional information" description="00050: A segment indicating special conditions related to the total invoice owing to origin, customs preference or other commercial factors."></ALI>
+     <IMD status="C" repeats="1" label="Item description" description="00060: A segment providing a description common to all line items of the invoice."></IMD>
+     <FTX status="C" repeats="99" label="Free text" description="00070: A segment with free text information, in coded or clear form, used when additional information is needed but cannot be accommodated within other segments. In computer to computer exchanges such text will normally require the receiver to process this segment manually."></FTX>
+     <GROUP status="C" repeats="99999" label="SG1" description="00080: A group of segments for giving references and where necessary, their dates, related identification numbers, locations, measurements, quantities, free text and monetary amounts, relating to the whole message, e.g. contract information, import or export license information, despatch advice information.">
+          <RFF status="M" repeats="1" label="Reference" description="00090: A segment identifying the reference by its number and where appropriate a line number within a document."></RFF>
+          <DTM status="C" repeats="5" label="Date/time/period" description="00100: A segment specifying the date/time related to the reference."></DTM>
+     </GROUP>
+     <GROUP status="C" repeats="99" label="SG2" description="00110: A group of segments identifying the parties with associated information.">
+          <NAD status="M" repeats="1" label="Name and address" description="00120: A segment identifying names and addresses of the parties, in coded or clear form, and their functions relevant to the invoice. Identification of the seller and buyer parties is mandatory for the invoice message. It is recommended that where possible only the coded form of the party ID should be specified e.g. The Buyer and Seller are known to each other, thus only the coded ID is required, but the Consignee or Delivery address may vary and would have to be clearly specified, preferably in structured format."></NAD>
+          <LOC status="C" repeats="25" label="Place/location identification" description="00130: A segment giving more specific location information of the party specified in the NAD segment e.g. internal site/building number."></LOC>
+          <FII status="C" repeats="5" label="Financial institution information" description="00140: A segment identifying the financial institution (e.g. bank) and relevant account numbers for the seller, buyer and where necessary other parties."></FII>
+          <GROUP status="C" repeats="9999" label="SG3" description="00150: A group of segment for giving references only relevant to the specified party rather than the whole invoice.">
+               <RFF status="M" repeats="1" label="Reference" description="00160: A segment identifying the reference by its number and where appropriate a line number within a document."></RFF>
+               <DTM status="C" repeats="5" label="Date/time/period" description="00170: A segment specifying the date and/or time related to the reference."></DTM>
+          </GROUP>
+          <GROUP status="C" repeats="5" label="SG4" description="00180: A group of segments identifying the documentary requirements of the specified party.">
+               <DOC status="M" repeats="1" label="Document/message details" description="00190: A segment identifying and providing information relating to the documents required by the party specified by the NAD segment."></DOC>
+               <DTM status="C" repeats="5" label="Date/time/period" description="00200: A segment specifying the date and/or time of the document."></DTM>
+          </GROUP>
+          <GROUP status="C" repeats="5" label="SG5" description="00210: A group of segments giving contact details of the specific person or department within the party identified in the NAD segment.">
+               <CTA status="M" repeats="1" label="Contact information" description="00220: A segment to identify a person or department, and their function, to whom communications should be directed."></CTA>
+               <COM status="C" repeats="5" label="Communication contact" description="00230: A segment to identify a communications type and number for the contact specified in the CTA segment."></COM>
+          </GROUP>
+     </GROUP>
+     <GROUP status="C" repeats="5" label="SG6" description="00240: A group of segments specifying tax related information, and when necessary, the location(s) to which that tax information relates.">
+          <TAX status="M" repeats="1" label="Duty/tax/fee details" description="00250: A segment specifying a tax type, category and rate or exemption, relating to the whole invoice e.g. Value Added Tax at the standard rate is applicable for all items."></TAX>
+          <MOA status="C" repeats="1" label="Monetary amount" description="00260: A segment specifying the amount for the identified tax/fee."></MOA>
+          <LOC status="C" repeats="5" label="Place/location identification" description="00270: A segment indicating the location to which the tax or exemption specified in the TAX segment applies, e.g. city or state or country tax."></LOC>
+     </GROUP>
+     <GROUP status="C" repeats="99" label="SG7" description="00280: A group of segments specifying the currencies and related dates/periods valid for the whole invoice. Currency data maybe omitted in national applications but will be required for international transactions.">
+          <CUX status="M" repeats="1" label="Currencies" description="00290: A segment identifying the currencies required in the invoice e.g. the invoice currency. A rate of exchange may be given to convert a reference currency into a target currency."></CUX>
+          <DTM status="C" repeats="5" label="Date/time/period" description="00300: A segment specifying the date/time/period related to the rate of exchange."></DTM>
+     </GROUP>
+     <GROUP status="C" repeats="10" label="SG8" description="00310: A group of segments specifying the terms of payment applicable for the whole invoice.">
+          <PAT status="M" repeats="1" label="Payment terms" description="00320: A segment identifying the payment terms and date/time basis."></PAT>
+          <DTM status="C" repeats="5" label="Date/time/period" description="00330: A segment giving the specific date/time/period, if needed, of any payments, discounts, instalments etc."></DTM>
+          <PCD status="C" repeats="1" label="Percentage details" description="00340: A segment specifying the discount, interest, penalty as well as instalment percentage."></PCD>
+          <MOA status="C" repeats="1" label="Monetary amount" description="00350: A segment specifying amounts related to payment discount penalties or instalments."></MOA>
+          <PAI status="C" repeats="1" label="Payment instructions" description="00360: To specify the instructions for payment."></PAI>
+          <FII status="C" repeats="1" label="Financial institution information" description="00370: To identify an account and a related financial institution."></FII>
+     </GROUP>
+     <GROUP status="C" repeats="10" label="SG9" description="00380: A group of segments identifying the mode and means of transport, contract of carriage, location and relevant dates and times for transportation, relating to the whole invoice.">
+          <TDT status="M" repeats="1" label="Transport information" description="00390: A segment specifying the mode, means and identification of the transport for the goods being invoiced."></TDT>
+          <GROUP status="C" repeats="10" label="SG10" description="00400: A group of segments giving the location and date/time information relative to the transportation.">
+               <LOC status="M" repeats="1" label="Place/location identification" description="00410: A segment identifying locations relevant to the transport specified in the TDT segment e.g. place of departure or border crossing point."></LOC>
+               <DTM status="C" repeats="5" label="Date/time/period" description="00420: A segment identifying the date/time details of departure and/or arrival of the transported goods for the specified location."></DTM>
+          </GROUP>
+          <GROUP status="C" repeats="9999" label="SG11" description="00430: A group of segments to allow reference to transport details.">
+               <RFF status="M" repeats="1" label="Reference" description="00440: A segment giving reference to transport details."></RFF>
+               <DTM status="C" repeats="5" label="Date/time/period" description="00450: A segment giving date/time/period on the above reference."></DTM>
+          </GROUP>
+     </GROUP>
+     <GROUP status="C" repeats="5" label="SG12" description="00460: A group of segments indicating the terms of delivery for the whole invoice.">
+          <TOD status="M" repeats="1" label="Terms of delivery or transport" description="00470: A segment identifying the delivery terms used e.g. INCOTERMS, code could be used to specify the delivery terms."></TOD>
+          <LOC status="C" repeats="2" label="Place/location identification" description="00480: A segment identifying locations relevant to the delivery terms specified in the TOD segment."></LOC>
+     </GROUP>
+     <GROUP status="C" repeats="1000" label="SG13" description="00490: A group of segments identifying the packaging, physical dimensions and marks and numbers for goods referenced by the whole invoice.">
+          <PAC status="M" repeats="1" label="Package" description="00500: A segment specifying the number and type of packages for the whole invoice, e.g. number and type of pallets."></PAC>
+          <MEA status="C" repeats="5" label="Measurements" description="00510: A segment specifying physical measurements of packages described in the PAC segment. e.g. package length, weight."></MEA>
+          <GROUP status="C" repeats="5" label="SG14" description="00520: A group of segments specifying the markings and labels on individual physical units.">
+               <PCI status="M" repeats="1" label="Package identification" description="00530: A segment specifying markings and labels used on individual physical units (packages) described in the PAC segment."></PCI>
+               <RFF status="C" repeats="1" label="Reference" description="00540: A segment identifying the master label number."></RFF>
+               <DTM status="C" repeats="5" label="Date/time/period" description="00550: A segment specifying the dates relevant to the package markings."></DTM>
+               <GIN status="C" repeats="5" label="Goods identity number" description="00560: A segment identifying the number or ranges of numbers for use with the package markings."></GIN>
+          </GROUP>
+     </GROUP>
+     <GROUP status="C" repeats="9999" label="SG15" description="00570: A group of segments specifying allowances and charges for the whole invoice. The allowance or charge specified within this Segment group may either relate to the total invoice in which case it cannot be overridden at detail level, or it can relate to the line items as a default allowance/charge and can be overridden by the ALC Segment group within the detail section. Where relevant, additional information, tax and alternate currency details are to be indicated in the TAX and MOA segments.">
+          <ALC status="M" repeats="1" label="Allowance or charge" description="00580: A segment identifying the charge or allowance and, where necessary, its calculation sequence."></ALC>
+          <ALI status="C" repeats="5" label="Additional information" description="00590: A segment indicating that allowance or charge specified is subject to special conditions owing to origin, customs preference or commercial factors."></ALI>
+          <GROUP status="C" repeats="5" label="SG16" description="00600: A group of segment for giving references and where necessary, their dates relating to the allowances or charges.">
+               <RFF status="M" repeats="1" label="Reference" description="00610: A segment identifying the reference by its number and where appropriate a line number within a document."></RFF>
+               <DTM status="C" repeats="5" label="Date/time/period" description="00620: A segment specifying the date and/or time related to the reference."></DTM>
+          </GROUP>
+          <GROUP status="C" repeats="1" label="SG17" description="00630: A group of segments specifying the quantity of the allowance or charge with its measure unit specifier. A range to which the allowance or charge applies may be specified e.g. An allowance of a free quantity of 20 pieces may be specified if the goods quantity ordered is greater than 1000 pieces.">
+               <QTY status="M" repeats="1" label="Quantity" description="00640: A segment identifying the type of quantity and the quantity related to the allowance or charge."></QTY>
+               <RNG status="C" repeats="1" label="Range details" description="00650: A segment specifying, if required, the range to which the allowance or charge applies."></RNG>
+          </GROUP>
+          <GROUP status="C" repeats="1" label="SG18" description="00660: A group of segments specifying the percentage for the allowance or charge, e.g. The allowance/charge amount is calculated as 5% of the goods value or a price reduction of 5% may be specified if the goods quantity ordered is within the range 5 tons to 10 tons.">
+               <PCD status="M" repeats="1" label="Percentage details" description="00670: A segment identifying the percentage and the percentage basis for the calculation of the allowance or charge."></PCD>
+               <RNG status="C" repeats="1" label="Range details" description="00680: A segment specifying, if required, a range for the application of the percentage."></RNG>
+          </GROUP>
+          <GROUP status="C" repeats="2" label="SG19" description="00690: A group of segments specifying a monetary amount for an allowance or charge. A range to which the allowance or charge applies can be specified, e.g. an allowance of 5000 BEF may be specified if goods value ordered is greater than 100000 BEF.">
+               <MOA status="M" repeats="1" label="Monetary amount" description="00700: A segment identifying the monetary amount for the allowance or charge."></MOA>
+               <RNG status="C" repeats="1" label="Range details" description="00710: A segment specifying, if required, a range for the application of the allowance/charge amount."></RNG>
+          </GROUP>
+          <GROUP status="C" repeats="1" label="SG20" description="00720: A group of segments specifying the rate per unit and basis to which the allowance or charge applies, e.g. the allowance/charge amount is 3 DEM per 10 tons.">
+               <RTE status="M" repeats="1" label="Rate details" description="00730: A segment specifying the rate per unit and the basis for calculation."></RTE>
+               <RNG status="C" repeats="1" label="Range details" description="00740: A segment specifying, if required, the range for the application of the allowance/charge rate."></RNG>
+          </GROUP>
+          <GROUP status="C" repeats="5" label="SG21" description="00750: A group of segments specifying tax related information for the allowance or charge and, when necessary.">
+               <TAX status="M" repeats="1" label="Duty/tax/fee details" description="00760: A segment specifying the tax type, category and rate, or exemption, related to the allowance or charge."></TAX>
+               <MOA status="C" repeats="1" label="Monetary amount" description="00770: A segment specifying the amount for the allowance or charge."></MOA>
+          </GROUP>
+     </GROUP>
+     <GROUP status="C" repeats="100" label="SG22" description="00780: A group of segments identifying any rules, laws or regulations with which the supplier must comply to meet requirements e.g. building regulations, safety requirements, etc.">
+          <RCS status="M" repeats="1" label="Requirements and conditions" description="00790: A segment to enable industry or national requirements to be specified."></RCS>
+          <RFF status="C" repeats="5" label="Reference" description="00800: A segment identifying the referenced document by its number and, where appropriate, a line number."></RFF>
+          <DTM status="C" repeats="5" label="Date/time/period" description="00810: A segment specifying the date/time related to the reference."></DTM>
+          <FTX status="C" repeats="5" label="Free text" description="00820: A segment with free text information, in coded or clear form, used when additional information is needed but cannot be accommodated within other segments. In computer to computer exchanges such text will normally require the receiver to process this segment manually."></FTX>
+     </GROUP>
+     <GROUP status="C" repeats="1" label="SG23" description="00830: A segment group to give information about adjustment.">
+          <AJT status="M" repeats="1" label="Adjustment details" description="00840: A segment giving adjustment details."></AJT>
+          <FTX status="C" repeats="5" label="Free text" description="00850: A segment giving additional information on the adjustment."></FTX>
+     </GROUP>
+     <GROUP status="C" repeats="1" label="SG24" description="00860: A segment group giving the possibility in a reply to INVOIC of instructing the other party of the action to be taken.">
+          <INP status="M" repeats="1" label="Parties and instruction" description="00870: A segment giving information on parties to instruction."></INP>
+          <FTX status="C" repeats="5" label="Free text" description="00880: A segment giving additional information about parties to instruction."></FTX>
+     </GROUP>
+     <GROUP status="C" repeats="9999999" label="SG25" description="00890: EQD-FTX-DGS-SG28-SG29-SG30-SG31-SG32-SG34-SG35- SG36-SG40-SG46-SG48-SG49-SG50-SG51 A group of segments providing details of the individual invoiced items. There must be at least one occurrence of this segment group within an invoice, but not necessarily in a credit note or a debit note. This Segment group may be repeated to give sub-lin">
+          <LIN status="M" repeats="1" label="Line item" description="00900: A segment identifying the line item by the line number and configuration level, and additionally, identifying the product or service invoiced. Other product identification numbers, e.g. Buyer product number etc., can be specified within the following PIA segment."></LIN>
+          <PIA status="C" repeats="25" label="Additional product id" description="00910: A segment providing either additional identification to the product specified in the LIN segment (e.g. Harmonized System number), or provides any substitute product identification."></PIA>
+          <PGI status="C" repeats="99" label="Product group information" description="00920: A segment identifying the product or price group."></PGI>
+          <IMD status="C" repeats="99" label="Item description" description="00930: A segment for describing the product or service being invoiced as well as product characteristic. This segment should be used for products or services that cannot be fully identified by a product code or article number."></IMD>
+          <MEA status="C" repeats="5" label="Measurements" description="00930: A segment enabling the physical measurements of the invoiced item to be specified where this is required for full identification of the product. Any measurements must refer to the product in its unpacked form e.g. thickness of plastic film, length, weight, etc."></MEA>
+          <QTY status="C" repeats="5" label="Quantity" description="00940: A segment identifying the product quantities e.g. invoiced quantity."></QTY>
+          <PCD status="C" repeats="1" label="Percentage details" description="00950: A segment specifying the strength or yield of a product as a percentage e.g. 80% to indicate the strength of an Acid."></PCD>
+          <ALI status="C" repeats="5" label="Additional information" description="00960: A segment indicating that the line item is subject to special conditions owing to origin, customs preference, embargo regulations or commercial factors."></ALI>
+          <DTM status="C" repeats="35" label="Date/time/period" description="00970: A segment specifying date/time/period details relating to the line item only."></DTM>
+          <GIN status="C" repeats="1000" label="Goods identity number" description="00980: A segment providing identity numbers to be applied to the goods being invoiced, e.g. serial numbers for assembled equipment."></GIN>
+          <GIR status="C" repeats="1000" label="Related identification numbers" description="00990: A segment providing sets of related identification numbers for a line item, e.g. engine numbers, chassis number and transmission number for a vehicle."></GIR>
+          <QVR status="C" repeats="1" label="Quantity variances" description="01000: A segment identifying quantity variances, between, e.g. quantity delivered/invoiced and quantity ordered."></QVR>
+          <EQD status="C" repeats="1" label="Equipment details" description="01010: A segment to specify the type and size of equipment being billed."></EQD>
+          <FTX status="C" repeats="99" label="Free text" description="01020: A segment with free text information, in coded or clear form, used when additional information is needed but cannot be accommodated within other segments. In computer to computer exchanges such text will normally require the receiver to process this segment manually."></FTX>
+          <GROUP status="C" repeats="99" label="SG26" description="01030: A group of segments specifying any monetary amounts relating to the products and when necessary a currency.">
+               <MOA status="M" repeats="1" label="Monetary amount" description="01040: A segment specifying any monetary amounts relating to the product, e.g. item amount, insurance value, customs value."></MOA>
+               <CUX status="C" repeats="1" label="Currencies" description="01050: A segment identifying the currencies required in the line item, when is different from the heading currencies. A rate of exchange may given to convert a reference currency into a target currency."></CUX>
+          </GROUP>
+          <GROUP status="C" repeats="10" label="SG27" description="01060: A group of segments specifying the terms of payment for the line item where this is different to that specified in the heading section.">
+               <PAT status="M" repeats="1" label="Payment terms" description="01070: A segment identifying the payment terms and date/time basis."></PAT>
+               <DTM status="C" repeats="5" label="Date/time/period" description="01080: A segment giving the specific date/time/period, if needed, of any payments, discounts, instalments etc."></DTM>
+               <PCD status="C" repeats="99" label="Percentage details" description="01090: A segment specifying discount, interest, penalty as well as instalment percentage."></PCD>
+               <MOA status="C" repeats="1" label="Monetary amount" description="01100: A segment specifying amounts related to payment discount penalties or instalments."></MOA>
+          </GROUP>
+          <GROUP status="C" repeats="25" label="SG28" description="01110: A group of segments identifying the relevant pricing information for the goods or services invoiced.">
+               <PRI status="M" repeats="1" label="Price details" description="01110: A segment to specify the price type and amount. The price used in the calculation of the line amount will be identified as 'Price'. Indication of 'net price' or 'gross price' can be given in 5387 'Price specification code'."></PRI>
+               <APR status="C" repeats="1" label="Additional price information" description="01130: A segment to identify pricing information such as a price multiplier, the class or type of trade and additionally identifying the reason for any changes."></APR>
+               <RNG status="C" repeats="1" label="Range details" description="01140: A segment to identify the ranges (quantity, amount, etc.) to which the additional price information applies."></RNG>
+               <DTM status="C" repeats="5" label="Date/time/period" description="01150: A segment to identify the date/time/period information related to the price change. e.g. period of validity."></DTM>
+          </GROUP>
+          <GROUP status="C" repeats="10" label="SG29" description="01160: A group giving references and where necessary, their dates, relating to the line item.">
+               <RFF status="M" repeats="1" label="Reference" description="01170: A segment identifying the reference by its number and where appropriate a line number within a document."></RFF>
+               <DTM status="C" repeats="5" label="Date/time/period" description="01180: A segment specifying the date/time related to the reference."></DTM>
+          </GROUP>
+          <GROUP status="C" repeats="999" label="SG30" description="01190: A group of segments identifying the packaging, physical dimensions, and marks and numbers for goods referenced in the line item.">
+               <PAC status="M" repeats="1" label="Package" description="01200: A segment specifying the number and type of packages for the line item, e.g. number and type of pallets."></PAC>
+               <MEA status="C" repeats="10" label="Measurements" description="01210: A segment specifying physical measurements of packages described in the PAC segment e.g. package length, weight."></MEA>
+               <GROUP status="C" repeats="10" label="SG31" description="01220: A group of segments specifying the markings and labels on individual physical units.">
+                    <PCI status="M" repeats="1" label="Package identification" description="01230: A segment specifying markings and labels used on individual physical units (packages) described in the PAC segment."></PCI>
+                    <RFF status="C" repeats="1" label="Reference" description="01240: A segment identifying the master label number."></RFF>
+                    <DTM status="C" repeats="5" label="Date/time/period" description="01250: A segment specifying the dates relevant to the package markings."></DTM>
+                    <GIN status="C" repeats="10" label="Goods identity number" description="01260: A segment identifying the number or ranges of numbers for use with the package markings."></GIN>
+               </GROUP>
+          </GROUP>
+          <GROUP status="C" repeats="9999" label="SG32" description="01270: A group of segments specifying destination and quantity details for consignments involving multi-destination deliveries for a specified line item.">
+               <LOC status="M" repeats="1" label="Place/location identification" description="01280: A segment indicating the location to which part of the consignment has been delivered."></LOC>
+               <QTY status="C" repeats="100" label="Quantity" description="01290: A segment specifying the quantity delivered to the identified location."></QTY>
+               <DTM status="C" repeats="5" label="Date/time/period" description="01300: A segment specifying the dates and/or times that the delivery has been made."></DTM>
+          </GROUP>
+          <GROUP status="C" repeats="99" label="SG33" description="01310: A group of segments specifying tax related information for the line item, and when necessary, the location(s) to which that tax information relates.">
+               <TAX status="M" repeats="1" label="Duty/tax/fee details" description="01320: A segment specifying a tax type, category and rate, or exemption, relating to the line item."></TAX>
+               <MOA status="C" repeats="2" label="Monetary amount" description="01330: A segment specifying the amount for the identified tax/fee."></MOA>
+               <LOC status="C" repeats="5" label="Place/location identification" description="01340: A segment indicating the location to which the tax or exemption specified in the TAX segment applies, e.g. city or state or country tax."></LOC>
+          </GROUP>
+          <GROUP status="C" repeats="99" label="SG34" description="01350: A group of segments identifying the parties with associated information, relevant to the line item only.">
+               <NAD status="M" repeats="1" label="Name and address" description="01360: A segment identifying names and addresses of the parties, in coded or clear form, and their functions relevant to the line item."></NAD>
+               <LOC status="C" repeats="5" label="Place/location identification" description="01370: A segment giving more specific location information of the party specified in the NAD segment e.g. internal site/building number."></LOC>
+               <GROUP status="C" repeats="5" label="SG35" description="01380: A group of segment for giving references only relevant to the specified party rather than the whole line item.">
+                    <RFF status="M" repeats="1" label="Reference" description="01390: A segment identifying the reference by its number and where appropriate a line number within a document."></RFF>
+                    <DTM status="C" repeats="5" label="Date/time/period" description="01400: A segment specifying the date and/or time related to the reference."></DTM>
+               </GROUP>
+               <GROUP status="C" repeats="5" label="SG36" description="01410: A group of segments identifying the documentary requirements of the specified party.">
+                    <DOC status="M" repeats="1" label="Document/message details" description="01420: A segment identifying and providing information relating to the documents required by the party specified by the NAD segment."></DOC>
+                    <DTM status="C" repeats="5" label="Date/time/period" description="01430: A segment specifying the date and/or time of the document."></DTM>
+               </GROUP>
+               <GROUP status="C" repeats="5" label="SG37" description="01440: A group of segments giving contact details of the specific person or department within the party identified in the NAD segment.">
+                    <CTA status="M" repeats="1" label="Contact information" description="01450: A segment to identify a person or department, and their function, to whom communications should be directed."></CTA>
+                    <COM status="C" repeats="5" label="Communication contact" description="01460: A segment to identify a communications type and number for the contact specified in the CTA segment."></COM>
+               </GROUP>
+          </GROUP>
+          <GROUP status="C" repeats="30" label="SG38" description="01470: A group of segments specifying allowances and charges for the line item where this is different to or not specified within the heading section.">
+               <ALC status="M" repeats="1" label="Allowance or charge" description="01480: A segment identifying the charge or allowance and, where necessary its calculation sequence."></ALC>
+               <ALI status="C" repeats="5" label="Additional information" description="01490: A segment indicating that allowance or charge specified is subject to special conditions owing to origin, customs preference or commercial factors."></ALI>
+               <DTM status="C" repeats="5" label="Date/time/period" description="01500: To specify date, and/or time, or period."></DTM>
+               <GROUP status="C" repeats="1" label="SG39" description="01510: A group of segments specifying the quantity of the allowance or charge with its measure unit specifier. A range to which the allowance or charge applies may be specified e.g. An allowance of a free quantity of 20 pieces may be specified if the goods quantity ordered is greater than 1000 pieces.">
+                    <QTY status="M" repeats="1" label="Quantity" description="01520: A segment identifying the type of quantity and the quantity related to the allowance or charge."></QTY>
+                    <RNG status="C" repeats="1" label="Range details" description="01530: A segment specifying, if required, the range to which the allowance or charge applies."></RNG>
+               </GROUP>
+               <GROUP status="C" repeats="1" label="SG40" description="01540: A group of segments specifying the percentage for the allowance or charge, e.g. The allowance/charge amount is calculated as 5% of the goods value or a price reduction of 5% may be specified if the goods quantity ordered is within the range 5 tons to 10 tons.">
+                    <PCD status="M" repeats="1" label="Percentage details" description="01550: A segment identifying the percentage and the percentage basis for the calculation of the allowance or charge."></PCD>
+                    <RNG status="C" repeats="1" label="Range details" description="01560: A segment specifying, if required, a range for the application of the percentage."></RNG>
+               </GROUP>
+               <GROUP status="C" repeats="2" label="SG41" description="01570: A group of segments specifying a monetary amount for an allowance or charge. A range to which the allowance or charge applies can be specified, e.g. an allowance of 5000 BEF may be specified if goods value ordered is greater than 100000 BEF.">
+                    <MOA status="M" repeats="1" label="Monetary amount" description="01580: A segment identifying the monetary amount for the allowance or charge."></MOA>
+                    <RNG status="C" repeats="1" label="Range details" description="01590: A segment specifying, if required, a range for the application of the allowance/charge amount."></RNG>
+               </GROUP>
+               <GROUP status="C" repeats="1" label="SG42" description="01600: A group of segments specifying the rate per unit and basis to which the allowance or charge applies, e.g. The allowance/charge amount is 3 DEM per 10 tons.">
+                    <RTE status="M" repeats="1" label="Rate details" description="01610: A segment specifying the rate per unit and the basis for calculation."></RTE>
+                    <RNG status="C" repeats="1" label="Range details" description="01620: A segment specifying, if required, the range for the application of the allowance/charge rate."></RNG>
+               </GROUP>
+               <GROUP status="C" repeats="5" label="SG43" description="01630: A group of segments specifying tax related information for the allowance or charge and, when necessary.">
+                    <TAX status="M" repeats="1" label="Duty/tax/fee details" description="01640: A segment specifying the tax type, category, and rate, or exemption, related to the allowance or charge."></TAX>
+                    <MOA status="C" repeats="2" label="Monetary amount" description="01650: A segment specifying the amount for the allowance or charge."></MOA>
+               </GROUP>
+          </GROUP>
+          <GROUP status="C" repeats="10" label="SG44" description="01660: A group of segments identifying the mode and means of transport, location and relevant dates and times for transportation, relating to the line item, where this is different to or not specified within the heading section.">
+               <TDT status="M" repeats="1" label="Transport information" description="01670: A segment specifying the mode, means and identification of the transport for the goods in the line item."></TDT>
+               <GROUP status="C" repeats="10" label="SG45" description="01680: A group of segments giving the location and date/time information relative to the transportation.">
+                    <LOC status="M" repeats="1" label="Place/location identification" description="01690: A segment identifying locations relevant to the transport specified in the TDT segment e.g. place of departure or border crossing point."></LOC>
+                    <DTM status="C" repeats="5" label="Date/time/period" description="01700: A segment identifying the date/time details of departure and/or arrival of the transported goods for the specified location."></DTM>
+               </GROUP>
+          </GROUP>
+          <GROUP status="C" repeats="5" label="SG46" description="01710: A group of segments indicating the terms of delivery for the line item where this is different to or not specified within the heading section.">
+               <TOD status="M" repeats="1" label="Terms of delivery or transport" description="01720: A segment identifying the delivery terms used. e.g. INCOTERMS, code could be used to specify the delivery terms."></TOD>
+               <LOC status="C" repeats="2" label="Place/location identification" description="01730: A segment identifying locations relevant to the delivery terms specified in the TOD segment."></LOC>
+          </GROUP>
+          <GROUP status="C" repeats="100" label="SG47" description="01740: A group of segments identifying for the line item - where this is different to or not specified within the Heading section - any rules, laws or regulations with which the supplier must comply to meet requirements. e.g. building regulations, safety requirements etc.">
+               <RCS status="M" repeats="1" label="Requirements and conditions" description="01750: A segment to enable industry or national requirements to be specified."></RCS>
+               <RFF status="C" repeats="5" label="Reference" description="01760: A segment identifying the referenced document by its number and, where appropriate, a line number."></RFF>
+               <DTM status="C" repeats="5" label="Date/time/period" description="01770: A segment specifying the date/time related to the reference."></DTM>
+               <FTX status="C" repeats="5" label="Free text" description="01780: A segment with free text information, in coded or clear form, used when additional information is needed but cannot be accommodated within other segments. In computer to computer exchanges such text will normally require the receiver to process this segment manually."></FTX>
+          </GROUP>
+     </GROUP>
+     <UNS status="M" repeats="1" label="Section control" description="01790: A mandatory service segment placed before the first user segment in the summary section to avoid segment collision."></UNS>
+     <CNT status="C" repeats="10" label="Control total" description="01800: A segment by which control totals may be provided by the sender for checking by the receiver."></CNT>
+     <GROUP status="M" repeats="100" label="SG48" description="01810: A group of segments giving total amounts for the whole invoice and - if relevant -detailing amounts pre-paid with relevant references and dates.">
+          <MOA status="M" repeats="1" label="Monetary amount" description="01820: A segment giving the total amounts for the whole invoice message such as message monetary amount, message line item total amount, amount subject to payment discount, amount subject to tax, alternative currency total amount, total additional amount, sub- total amounts prepaid, total amount prepaid."></MOA>
+          <GROUP status="C" repeats="1" label="SG49" description="01830: A group of segments for giving references and where necessary, their dates, relating e.g. amounts prepaid number.">
+               <RFF status="M" repeats="1" label="Reference" description="01840: A segment identifying the reference by its number and where appropriate a line number within a document."></RFF>
+               <DTM status="C" repeats="5" label="Date/time/period" description="01850: A segment specifying the date/time related to the reference."></DTM>
+          </GROUP>
+     </GROUP>
+     <GROUP status="C" repeats="10" label="SG50" description="01860: A group of segments specifying taxes totals for the invoice.">
+          <TAX status="M" repeats="1" label="Duty/tax/fee details" description="01870: A segment specifying the tax type to be summarized."></TAX>
+          <MOA status="C" repeats="9" label="Monetary amount" description="01880: A segment specifying the summary amount for the tax specified."></MOA>
+     </GROUP>
+     <GROUP status="C" repeats="15" label="SG51" description="01870: A group of segments specifying allowances and charges summary totals for the invoice.">
+          <ALC status="M" repeats="1" label="Allowance or charge" description="01880: A segment identifying the charge or allowance type to be summarised."></ALC>
+          <ALI status="C" repeats="1" label="Additional information" description="01890: A segment indicating that allowance or charge specified is subject to special conditions owing to origin, customs preference or commercial factors."></ALI>
+          <MOA status="C" repeats="2" label="Monetary amount" description="01900: A segment specifying the summary amount for the allowance or charge."></MOA>
+     </GROUP>
+</TRANSMISSION>

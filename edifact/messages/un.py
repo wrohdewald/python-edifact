@@ -7,3 +7,9 @@ class MSCONS(Message):
         spec = 'MSCONS'
 
 edifact.configuration.MESSAGE_CLASSES['MSCONS'] = MSCONS
+
+class INVOIC(Message):
+    class Meta:
+        spec = 'INVOIC'
+
+edifact.configuration.MESSAGE_CLASSES['INVOIC'] = INVOIC
