@@ -100,12 +100,12 @@ class UNH(object):
     def get(self, label, default=None):
         """Get a value from the nested data structure."""
         value = default
-        for k, v in self.data.iteritems():
+        for k, v in self.data.items():
             if k == label:
                 value = v
                 break
             if isinstance(v, dict):
-                for k2, v2 in v.iteritems():
+                for k2, v2 in v.items():
                     if k2 == label:
                         value = v2
             if value:

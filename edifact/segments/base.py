@@ -24,12 +24,12 @@ class Composite(object):
     def content(self, content):
         """Set content."""
         if len(content) > self.max_length:
-            raise ValueError('trying to set content {0} for composite with maximum length {1}'.format(content, unicode(self.max_length)))
+            raise ValueError('trying to set content {0} for composite with maximum length {1}'.format(content, str(self.max_length)))
         self._content = content
 
     def __str__(self):
         """Return value."""
-        return self.content or u''
+        return self.content or ''
 
 
 class SegmentMeta(type):
@@ -41,7 +41,7 @@ class SegmentMeta(type):
 
         # composites
         composites = {}
-        for key, value in attrs.iteritems():
+        for key, value in attrs.items():
             if isinstance(value, Composite):
                 composites[key] = value
                 cleanup.append(key)
@@ -64,14 +64,14 @@ class Segment(six.with_metaclass(SegmentMeta)):
         """Constructor."""
         self.una = una
 
-        for key, value in kwargs.iteritems():
+        for key, value in kwargs.items():
             if key not in self._composites:
                 raise IndexError('composite {0} not found'.format(key,))
             self._composites[key].content = value
 
     def __str__(self):
         """Return the string representation of this segment."""
-        ordered_composites = [unicode(composite) for composite in sorted(self._composites.values(), key=lambda x: x.index)]
+        ordered_composites = [str(composite) for composite in sorted(list(self._composites.values()), key=lambda x: x.index)]
         return ''.join((
             self._meta.identifier,  # segment tag
             self.una.data_element_separator,  # segment tag separator

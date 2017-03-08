@@ -76,7 +76,7 @@ class Message(six.with_metaclass(MessageMeta)):
 
     def process_segments(self, segments, segment_index, elements_indices, repeats, last_containers=[]):
         edifact_logger.debug('------------------------- process segment (%s/%s) ----------------------' % (segment_index, len(segments),))
-        edifact_logger.debug('element indices: ' + ', '.join([unicode(ei) for ei in elements_indices]) + ', repeats: %s' % repeats)
+        edifact_logger.debug('element indices: ' + ', '.join([str(ei) for ei in elements_indices]) + ', repeats: %s' % repeats)
 
         # Exit at the end of segments or elements
         if segment_index >= len(segments) or len(elements_indices) < 1:
@@ -296,7 +296,7 @@ class Group(object):
         self.label = label
         self.description = description
         self.repeat = repeat
-        self.uid = ''.join(random.choice(string.lowercase) for i in range(5))
+        self.uid = ''.join(random.choice(string.ascii_lowercase) for i in range(5))
 
     def add(self, label, element):
         if not hasattr(self, 'elements'):
