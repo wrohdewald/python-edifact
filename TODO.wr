@@ -1,0 +1,27 @@
+Discontinued playing with this, too much work for the current project.
+
+Next on my list would be:
+
+- check INVOIC D96A for status and repeats
+
+- make INVOIC D96A work with the example in tests/data/
+
+- simplify access. Addition to existing methods. Instead of
+   
+   msg.data['SG2'][1].elements['SG3'][0].elements['Reference'][0].data[0][1]
+
+   msg.sg2[1].sg3[0].Reference.data[0][1]
+   msg.sg2[1].sg3[0].RFF.data[0][1]
+
+   is .data needed, or can we do RFF[0][1]?
+
+   if a segment like Reference (RFF) has repeats=1, no list is needed
+
+   Implement __getattr__, __setattr__, __delattr__
+
+- why is BGM not parsed?
+
+- accect UNA tag
+
+- it should be possible to add new .xml specs without having to change the source code.
+  Either by scanning the specs dir or with a new registering function.
