@@ -234,7 +234,7 @@
      </GROUP>
      <GROUP status="C" repeats="10" label="SG50" description="01860: A group of segments specifying taxes totals for the invoice.">
           <TAX status="M" repeats="1" label="Duty/tax/fee details" description="01870: A segment specifying the tax type to be summarized."></TAX>
-          <MOA status="C" repeats="9" label="Monetary amount" description="01880: A segment specifying the summary amount for the tax specified."></MOA>
+          <MOA status="C" repeats="2" label="Monetary amount" description="01880: A segment specifying the summary amount for the tax specified."></MOA>
      </GROUP>
      <GROUP status="C" repeats="15" label="SG51" description="01870: A group of segments specifying allowances and charges summary totals for the invoice.">
           <ALC status="M" repeats="1" label="Allowance or charge" description="01880: A segment identifying the charge or allowance type to be summarised."></ALC>
